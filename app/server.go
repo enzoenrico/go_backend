@@ -18,6 +18,7 @@ func main() {
 	}
 
 	conn, err := l.Accept()
+	defer conn.Close()
 
 	if err != nil{
 		panic(err)
@@ -25,6 +26,7 @@ func main() {
 
 	resp, err := responses.ExtractResponse(conn)
 	if err != nil{
+		fmt.Println(resp)
 		panic(err)
 	}
 	path := utils.ExtractPath(resp)
