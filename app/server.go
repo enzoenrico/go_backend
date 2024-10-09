@@ -17,7 +17,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	conn, err = l.Accept()
+	conn, err := l.Accept()
 	responses.RespondOK(conn)
 
 	if err != nil {
