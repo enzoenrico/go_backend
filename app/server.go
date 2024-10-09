@@ -31,12 +31,14 @@ func main() {
 		panic(err)
 	}
 	path := utils.ExtractPath(resp)
+	fmt.Println(path)
 
 	// if ok := utils.ValidPath(path); ok {
 	// 	responses.RespondOK(conn)
 	// } else {
 	// 	responses.NotFound(conn)
 	// }
+
 	r := router.NewRouter(conn)
 	r.Handle("/echo/{str}", handlers.EchoHandler)
 
