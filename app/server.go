@@ -20,20 +20,23 @@ func main() {
 	conn, err := l.Accept()
 	defer conn.Close()
 
-	if err != nil{
+	if err != nil {
 		panic(err)
 	}
 
-	fmt.Println(conn)
+	var buf []byte
+	conn.Read(buf)
+	fmt.Println(string(buf))
+
 	resp, err := responses.ExtractResponse(conn)
-	if err != nil{
+	if err != nil {
 		panic(err)
 	}
 	path := utils.ExtractPath(resp)
 
-	if ok := utils.ValidPath(path); ok{
+	if ok := utils.ValidPath(path); ok {
 		responses.RespondOK(conn)
-	}else{
+	} else {
 		responses.NotFound(conn)
 	}
 
