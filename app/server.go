@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"net"
 	"os"
-	"responses"
-
 	"github.com/codecrafters-io/http-server-starter-go/app/responses"
 )
 
