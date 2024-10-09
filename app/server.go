@@ -24,6 +24,7 @@ func main() {
 		panic(err)
 	}
 
+	fmt.Println(conn)
 	resp, err := responses.ExtractResponse(conn)
 	if err != nil{
 		panic(err)
