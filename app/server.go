@@ -5,7 +5,9 @@ import (
 	"net"
 	"os"
 
+	"github.com/codecrafters-io/http-server-starter-go/app/handlers"
 	"github.com/codecrafters-io/http-server-starter-go/app/responses"
+	"github.com/codecrafters-io/http-server-starter-go/app/router"
 	"github.com/codecrafters-io/http-server-starter-go/app/utils"
 )
 
@@ -30,10 +32,12 @@ func main() {
 	}
 	path := utils.ExtractPath(resp)
 
-	if ok := utils.ValidPath(path); ok {
-		responses.RespondOK(conn)
-	} else {
-		responses.NotFound(conn)
-	}
+	// if ok := utils.ValidPath(path); ok {
+	// 	responses.RespondOK(conn)
+	// } else {
+	// 	responses.NotFound(conn)
+	// }
+	r := router.NewRouter(conn)
+	r.Handle("/echo/{str}", handlers.EchoHandler)
 
 }
