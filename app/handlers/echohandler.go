@@ -13,6 +13,5 @@ func EchoHandler(conn net.Conn) {
 		responses.NotFound(conn)
 	}
 	fmt.Println("EchoHandler ->" , req.URL.Path)
-
 	responses.RespondOK(conn)
 }

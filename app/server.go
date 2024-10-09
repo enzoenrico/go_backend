@@ -19,27 +19,22 @@ func main() {
 		os.Exit(1)
 	}
 
-	conn, err := l.Accept()
-	defer conn.Close()
-
-	if err != nil {
-		panic(err)
+	r := router.NewRouter()
+	r.Handle("GET", "/echo", handlers.EchoHandler)
+	for {
+		conn, err := l.Accept()
+		if err != nil{
+			fmt.Println("Error accepting connection:", err)
+			continue
+		}
+		go func(conn net.Conn){
+			defer conn.Close()
+			req, err := responses.ExtractRequest(conn)
+			if err != nil{
+				responses.NotFound(conn)
+				return
+			}
+			r.ServeHTTP(conn, req.Method, req.URL.Path)
+		}(conn)
 	}
-
-	resp, err := responses.ExtractRequest(conn)
-	if err != nil {
-		panic(err)
-	}
-	path := utils.ExtractPath(resp)
-	fmt.Println(path)
-
-	// if ok := utils.ValidPath(path); ok {
-	// 	responses.RespondOK(conn)
-	// } else {
-	// 	responses.NotFound(conn)
-	// }
-
-	r := router.NewRouter(conn)
-	r.Handle("/echo/{str}", handlers.EchoHandler)
-
 }
