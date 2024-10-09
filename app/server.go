@@ -8,7 +8,6 @@ import (
 	"github.com/codecrafters-io/http-server-starter-go/app/handlers"
 	"github.com/codecrafters-io/http-server-starter-go/app/responses"
 	"github.com/codecrafters-io/http-server-starter-go/app/router"
-	"github.com/codecrafters-io/http-server-starter-go/app/utils"
 )
 
 func main() {
