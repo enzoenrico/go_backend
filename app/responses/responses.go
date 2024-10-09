@@ -2,13 +2,12 @@ package responses
 
 import (
 	"bufio"
-	// "fmt"
+	"fmt"
 	"net"
 	"net/http"
 )
 
 var crlf = "\r\n"
-
 
 func RespondOK(connection net.Conn) (bool, error) {
 	ok_response := "HTTP/1.1 200 OK\r\n"
@@ -32,14 +31,15 @@ func NotFound(connection net.Conn) (bool, error) {
 }
 
 func ExtractResponse(connection net.Conn) (*http.Response, error) {
-    // Create a buffered reader from the connection.
-    reader := bufio.NewReader(connection)
-    
-    // Use http.ReadResponse to parse and get the HTTP response.
-    response, err := http.ReadResponse(reader, nil)
-    if err != nil {
-        return nil, err
-    }
-    
-    return response, nil
+	// Create a buffered reader from the connection.
+	reader := bufio.NewReader(connection)
+	fmt.Println(reader)
+
+	// Use http.ReadResponse to parse and get the HTTP response.
+	response, err := http.ReadResponse(reader, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
 }
