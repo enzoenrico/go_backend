@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"responses"
+
+	"github.com/codecrafters-io/http-server-starter-go/app/responses"
 )
 
 func main() {
@@ -14,7 +17,9 @@ func main() {
 		os.Exit(1)
 	}
 
-	_, err = l.Accept()
+	conn, err = l.Accept()
+	responses.RespondOK(conn)
+
 	if err != nil {
 		fmt.Println("Error accepting connection: ", err.Error())
 		os.Exit(1)
