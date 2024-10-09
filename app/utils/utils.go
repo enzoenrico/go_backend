@@ -2,8 +2,8 @@ package utils
 
 import "net/http"
 
-func ExtractPath(response *http.Response) string {
-	return response.Request.URL.Path
+func ExtractPath(req *http.Request) string {
+	return req.URL.Path
 }
 
 func ValidPath(path string) bool {

@@ -24,7 +24,7 @@ func main() {
 		panic(err)
 	}
 
-	resp, err := responses.ExtractResponse(conn)
+	resp, err := responses.ExtractRequest(conn)
 	if err != nil {
 		panic(err)
 	}

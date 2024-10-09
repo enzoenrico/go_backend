@@ -29,12 +29,12 @@ func NotFound(connection net.Conn) (bool, error) {
 	return true, nil
 }
 
-func ExtractResponse(connection net.Conn) (*http.Response, error) {
+func ExtractRequest(connection net.Conn) (*http.Request, error) {
 	// Create a buffered reader from the connection.
 	reader := bufio.NewReader(connection)
 
 	// Use http.ReadResponse to parse and get the HTTP response.
-	response, err := http.ReadResponse(reader, nil)
+	response, err := http.ReadRequest(reader, )
 	if err != nil {
 		return nil, err
 	}
