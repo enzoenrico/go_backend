@@ -6,7 +6,7 @@ git add .
 REM Capture the list of changed files
 SET "changed_files="
 FOR /F "delims=" %%f IN ('git diff --cached --name-only') DO (
-    SET "changed_files=!changed_files! %%f"
+    SET "changed_files= %%f"
 )
 
 REM Check if there are any changed files
