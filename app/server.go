@@ -19,18 +19,20 @@ func main() {
 
 	conn, err := l.Accept()
 
-	con_handler := responses.ConnectionHandler{Connection: conn}
-
-	res, err := con_handler.ExtractResponse()
-	if err != nil {
-		fmt.Println("Error getting path: ", err.Error())
+	if err != nil{
+		panic(err)
 	}
-	path := res.Request.URL.Path
-	fmt.Println(path)
+
+	resp, err := responses.ExtractResponse(conn)
+	if err != nil{
+		panic(err)
+	}
+	path := utils.ExtractPath(resp)
 
 	if ok := utils.ValidPath(path); ok{
-		con_handler.RespondOK()
+		responses.RespondOK(conn)
 	}else{
-		con_handler.NotFound()
+		responses.NotFound(conn)
 	}
+
 }
