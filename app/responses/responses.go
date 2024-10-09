@@ -2,6 +2,7 @@ package responses
 
 import (
 	"bufio"
+	"fmt"
 	"net"
 	"net/http"
 )
@@ -33,6 +34,7 @@ func NotFound(connection net.Conn) (bool, error) {
 func ExtractResponse(connection net.Conn) (http.Response, error) {
 	reader := bufio.NewReader(connection)
 	response, err := http.ReadResponse(reader, nil)
+	fmt.Printf("Reponse: %s", response)
 
 	if err != nil {
 		return http.Response{}, err
