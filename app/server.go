@@ -26,6 +26,8 @@ func main() {
 		fmt.Println("Error getting path: ", err.Error())
 	}
 	path := res.Request.URL.Path
+	fmt.Println(path)
+
 	if ok := utils.ValidPath(path); ok{
 		con_handler.RespondOK()
 	}else{
