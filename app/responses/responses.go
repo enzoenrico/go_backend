@@ -2,7 +2,7 @@ package responses
 
 import (
 	"bufio"
-	"fmt"
+	// "fmt"
 	"net"
 	"net/http"
 )
