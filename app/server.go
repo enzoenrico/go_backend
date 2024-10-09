@@ -24,10 +24,6 @@ func main() {
 		panic(err)
 	}
 
-	var buf []byte
-	conn.Read(buf)
-	fmt.Println(string(buf))
-
 	resp, err := responses.ExtractResponse(conn)
 	if err != nil {
 		panic(err)
