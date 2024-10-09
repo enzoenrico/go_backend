@@ -30,11 +30,9 @@ func NotFound(connection net.Conn) (bool, error) {
 }
 
 func ExtractRequest(connection net.Conn) (*http.Request, error) {
-	// Create a buffered reader from the connection.
 	reader := bufio.NewReader(connection)
 
-	// Use http.ReadResponse to parse and get the HTTP response.
-	response, err := http.ReadRequest(reader, )
+	response, err := http.ReadRequest(reader)
 	if err != nil {
 		return nil, err
 	}
