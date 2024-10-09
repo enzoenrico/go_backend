@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"net"
 	"os"
+
 	"github.com/codecrafters-io/http-server-starter-go/app/responses"
+	"github.com/codecrafters-io/http-server-starter-go/app/utils"
 )
 
 func main() {
@@ -16,10 +18,17 @@ func main() {
 	}
 
 	conn, err := l.Accept()
-	responses.RespondOK(conn)
 
+	con_handler := responses.ConnectionHandler{Connection: conn}
+
+	res, err := con_handler.ExtractResponse()
 	if err != nil {
-		fmt.Println("Error accepting connection: ", err.Error())
-		os.Exit(1)
+		fmt.Println("Error getting path: ", err.Error())
+	}
+	path := res.Request.URL.Path
+	if ok := utils.ValidPath(path); ok{
+		con_handler.RespondOK()
+	}else{
+		con_handler.NotFound()
 	}
 }
