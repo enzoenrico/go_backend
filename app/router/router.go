@@ -1,8 +1,9 @@
 package router
 
 import (
-	"fmt"
 	"net"
+
+	"github.com/charmbracelet/log"
 )
 
 type HandleFunc func(net.Conn)
@@ -41,7 +42,7 @@ func (r *Router) Handle(method, pattern string, handler HandleFunc) {
 
 func (r *Router) ServeHTTP(conn net.Conn, method, path string) {
 	for _, route := range r.routes {
-		fmt.Println(route.Handler)
+		log.Info(route)
 		if route.Method == method && route.Pattern == path {
 			route.Handler(conn)
 			return
