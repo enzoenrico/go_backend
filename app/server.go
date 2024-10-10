@@ -22,14 +22,15 @@ func main() {
 	r.Handle("GET", "/echo", handlers.EchoHandler)
 	for {
 		conn, err := l.Accept()
-		if err != nil{
+		if err != nil {
 			fmt.Println("Error accepting connection:", err)
 			continue
 		}
-		go func(conn net.Conn){
+		go func(conn net.Conn) {
+			fmt.Println("Starting new connection with: ", conn.RemoteAddr())
 			defer conn.Close()
 			req, err := responses.ExtractRequest(conn)
-			if err != nil{
+			if err != nil {
 				responses.NotFound(conn)
 				return
 			}
