@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"strings"
 
 	"github.com/codecrafters-io/http-server-starter-go/app/handlers"
 	"github.com/codecrafters-io/http-server-starter-go/app/responses"
-	"github.com/codecrafters-io/http-server-starter-go/app/router"
 
 	"github.com/charmbracelet/log"
 )
@@ -19,9 +19,6 @@ func main() {
 		fmt.Println("Failed to bind to port 4221")
 		os.Exit(1)
 	}
-
-	r := router.NewRouter()
-	r.Handle("GET", "/echo", handlers.EchoHandler)
 
 	for {
 		conn, err := l.Accept()
@@ -38,8 +35,11 @@ func main() {
 				return
 			}
 			// gotta get the path fully and it's arguments
-			log.Info(req.URL.Path)
-			r.ServeHTTP(conn, req.Method, req.URL.Path)
+			split_path := strings.Split(req.URL.Path, "/")
+			
+			if len(split_path) > 2{
+				handlers.EchoHandler(conn, split_path[2])
+			}
 		}(conn)
 	}
 }
