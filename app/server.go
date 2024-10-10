@@ -3,16 +3,24 @@ package main
 import (
 	"fmt"
 	"net"
+	"net/http"
 	"os"
-	"strings"
-
-	"github.com/codecrafters-io/http-server-starter-go/app/responses"
 
 	"github.com/charmbracelet/log"
+	"github.com/codecrafters-io/http-server-starter-go/app/responses"
+	"github.com/codecrafters-io/http-server-starter-go/app/utils"
 )
 
 func main() {
 	l, err := net.Listen("tcp", "0.0.0.0:4221")
+	r := &utils.Router{}
+
+	// r.Route("GET", "/", func(conn net.Conn, s string) {
+	// 	responses.RespondWithBody("oki", conn)
+	// })
+	r.Route("GET", "/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("vou me matar hoje as 23:47"))
+	})
 
 	if err != nil {
 		fmt.Println("Failed to bind to port 4221")
@@ -22,23 +30,19 @@ func main() {
 	for {
 		conn, err := l.Accept()
 		if err != nil {
-			log.Errorf("Error accepting connection: %s", err)
-			continue
+			log.Errorf("error accepting connection: %s", err)
 		}
 
 		go func(conn net.Conn) {
-			log.Info("New conn from: ", conn.LocalAddr().String())
-			req, err := responses.ExtractRequest(conn)
-			if err != nil {
-				responses.NotFound(conn)
-				return
-			}
-			log.Infof("Recieved request : %v", req.URL.Path)
-
-			// passar tudo para um router
-			// replicar arquitetura react router?
-
 			defer conn.Close()
+
+			req, err := responses.ExtractRequest(conn)
+
+			if err != nil {
+				log.Errorf("error accepting connection: %s", err)
+			}
+
+			r.ServeHTTP(req, conn)
 		}(conn)
 	}
 }

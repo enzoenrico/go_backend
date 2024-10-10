@@ -47,10 +47,8 @@ func RespondWithBody(body_content string, connection net.Conn) (bool, error) {
 	response := boiler + body_len + crlf + body_content + crlf
 
 	_, err := connection.Write([]byte(response))
-
 	if err != nil {
 		return false, err
-
 	}
 	return true, nil
 }
