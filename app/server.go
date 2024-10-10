@@ -37,6 +37,8 @@ func main() {
 				responses.NotFound(conn)
 				return
 			}
+			// gotta get the path fully and it's arguments
+			log.Info(req.URL.Path)
 			r.ServeHTTP(conn, req.Method, req.URL.Path)
 		}(conn)
 	}
