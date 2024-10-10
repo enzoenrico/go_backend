@@ -6,7 +6,6 @@ import (
 	"os"
 	"strings"
 
-	"github.com/codecrafters-io/http-server-starter-go/app/handlers"
 	"github.com/codecrafters-io/http-server-starter-go/app/responses"
 
 	"github.com/charmbracelet/log"
