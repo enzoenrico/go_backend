@@ -26,9 +26,9 @@ func main() {
 			log.Errorf("Error accepting connection: %s", err)
 			continue
 		}
+
 		go func(conn net.Conn) {
 			log.Info("New conn from: ", conn.LocalAddr().String())
-			defer conn.Close()
 			req, err := responses.ExtractRequest(conn)
 			if err != nil {
 				responses.NotFound(conn)
@@ -36,10 +36,12 @@ func main() {
 			}
 			// gotta get the path fully and it's arguments
 			split_path := strings.Split(req.URL.Path, "/")
-			
-			if len(split_path) > 2{
+
+			if len(split_path) > 2 && split_path[0] == "echo" {
 				handlers.EchoHandler(conn, split_path[2])
 			}
+
+			defer conn.Close()
 		}(conn)
 	}
 }
