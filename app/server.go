@@ -41,10 +41,6 @@ func main() {
 				log.Info(i)
 			}
 
-			if len(split_path) > 2 && split_path[0] == "echo" {
-				handlers.EchoHandler(conn, split_path[2])
-			}
-
 			defer conn.Close()
 		}(conn)
 	}
