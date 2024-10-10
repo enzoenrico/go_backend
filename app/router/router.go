@@ -1,6 +1,9 @@
 package router
 
-import "net"
+import (
+	"fmt"
+	"net"
+)
 
 type HandleFunc func(net.Conn)
 
@@ -39,6 +42,7 @@ func (r *Router) Handle(method, pattern string, handler HandleFunc) {
 
 func (r *Router) ServeHTTP(conn net.Conn, method, path string) {
 	for _, route := range r.routes {
+		fmt.Println(route)
 		if route.Method == method && route.Pattern == path {
 			route.Handler(conn)
 			return
