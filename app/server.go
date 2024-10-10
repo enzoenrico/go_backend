@@ -8,6 +8,8 @@ import (
 	"github.com/codecrafters-io/http-server-starter-go/app/handlers"
 	"github.com/codecrafters-io/http-server-starter-go/app/responses"
 	"github.com/codecrafters-io/http-server-starter-go/app/router"
+
+	"github.com/charmbracelet/log"
 )
 
 func main() {
@@ -20,14 +22,15 @@ func main() {
 
 	r := router.NewRouter()
 	r.Handle("GET", "/echo", handlers.EchoHandler)
+
 	for {
 		conn, err := l.Accept()
 		if err != nil {
-			fmt.Println("Error accepting connection:", err)
+			log.Errorf("Error accepting connection: %s", err)
 			continue
 		}
 		go func(conn net.Conn) {
-			fmt.Println("Starting new connection with: ", conn.RemoteAddr())
+			log.Info("New conn from: ", conn.LocalAddr().String())
 			defer conn.Close()
 			req, err := responses.ExtractRequest(conn)
 			if err != nil {
