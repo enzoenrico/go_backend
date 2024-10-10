@@ -15,8 +15,16 @@ IF "%changed_files%"=="" (
     exit /b 0
 )
 
-REM Create a custom commit message
-SET "commit_message=Changed files: %changed_files%"
+REM Prompt the user for a commit message or use the last edited file as default
+SET /P "user_commit_message=Enter a commit message (leave blank for default): "
+
+REM Determine the commit message
+
+IF "%user_commit_message%"=="" (
+    SET "commit_message=Updated: %changed_files%"
+) ELSE (
+    SET "commit_message=%user_commit_message%"
+)
 
 REM Commit the changes
 git commit -m "%commit_message%"

@@ -29,17 +29,14 @@ func main() {
 		go func(conn net.Conn) {
 			log.Info("New conn from: ", conn.LocalAddr().String())
 			req, err := responses.ExtractRequest(conn)
-			log.Infof("Recieved request : %v", req.URL.Path)
 			if err != nil {
 				responses.NotFound(conn)
 				return
 			}
-			// gotta get the path fully and it's arguments
-			split_path := strings.Split(req.URL.Path, "/")
+			log.Infof("Recieved request : %v", req.URL.Path)
 
-			for i := range(split_path){
-				log.Info(i)
-			}
+			// passar tudo para um router
+			// replicar arquitetura react router?
 
 			defer conn.Close()
 		}(conn)
