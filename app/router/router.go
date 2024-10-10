@@ -32,7 +32,6 @@ func (r *Router) Use(m MiddleWareFunc) {
 }
 
 func (r *Router) Handle(method, pattern string, handler HandleFunc) {
-
 	for _, m := range r.middleware {
 		handler = m(handler)
 	}
@@ -42,7 +41,7 @@ func (r *Router) Handle(method, pattern string, handler HandleFunc) {
 
 func (r *Router) ServeHTTP(conn net.Conn, method, path string) {
 	for _, route := range r.routes {
-		fmt.Println(route)
+		fmt.Println(route.Handler)
 		if route.Method == method && route.Pattern == path {
 			route.Handler(conn)
 			return
