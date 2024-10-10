@@ -37,6 +37,10 @@ func main() {
 			// gotta get the path fully and it's arguments
 			split_path := strings.Split(req.URL.Path, "/")
 
+			for i := range(split_path){
+				log.Info(i)
+			}
+
 			if len(split_path) > 2 && split_path[0] == "echo" {
 				handlers.EchoHandler(conn, split_path[2])
 			}
