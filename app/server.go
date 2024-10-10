@@ -29,7 +29,7 @@ func main() {
 		go func(conn net.Conn) {
 			log.Info("New conn from: ", conn.LocalAddr().String())
 			req, err := responses.ExtractRequest(conn)
-			log.Infof("Recieved request : %v", req.Header)
+			log.Infof("Recieved request : %v", req.URL.Path)
 			if err != nil {
 				responses.NotFound(conn)
 				return
