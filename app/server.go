@@ -15,9 +15,6 @@ func main() {
 	l, err := net.Listen("tcp", "0.0.0.0:4221")
 	r := &utils.Router{}
 
-	// r.Route("GET", "/", func(conn net.Conn, s string) {
-	// 	responses.RespondWithBody("oki", conn)
-	// })
 	r.Route("GET", "/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("vou me matar hoje as 23:47"))
 	})

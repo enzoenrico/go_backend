@@ -46,7 +46,7 @@ func (rtr *Router) ServeHTTP(r *http.Request, conn net.Conn) {
 		if !match{
 			continue
 		}
-        e.Handler.ServeHTTP()
+		return
 	}
 
 	responses.NotFound(conn)
