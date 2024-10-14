@@ -33,7 +33,7 @@ func main() {
 				log.Errorf("error accepting connection: %s", err)
 			}
 
-			fmt.Printf("%s request on %s", req.Method, req.URL.Path)
+			log.Logf(0,"> %s request on %s", req.Method, req.URL.Path)
 
 			handlers.EchoHandler(conn, "oki")
 
