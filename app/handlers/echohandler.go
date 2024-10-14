@@ -10,6 +10,8 @@ import (
 func EchoHandler(conn net.Conn, arg string) {
 	defer conn.Close()
 
+	fmt.Println("> Entering the Echo Handler")
+
 	req, err := responses.ExtractRequest(conn)
 	if err != nil {
 		responses.NotFound(conn)
