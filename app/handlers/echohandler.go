@@ -12,14 +12,14 @@ func EchoHandler(conn net.Conn, arg string) {
 
 	fmt.Println("> Entering the Echo Handler")
 
-	req, err := responses.ExtractRequest(conn)
-	fmt.Println(req.URL.Path)
-	if err != nil {
-		fmt.Println("> Request could not be converted! \n")
-		responses.NotFound(conn)
-	}
+	// req, err := responses.ExtractRequest(conn)
+	// if err != nil {
+	// 	fmt.Println("> Request could not be converted! \n")
+	// 	responses.NotFound(conn)
+	// }
 
-	fmt.Println("> EchoHandler -> ", req.URL.Path)
+	// fmt.Println("> EchoHandler -> ", req.URL.Path)
+	fmt.Printf("> Responding with: %s \n", arg)
 	responses.RespondWithBody(arg, conn)
 	return
 }
