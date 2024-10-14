@@ -3,21 +3,15 @@ package main
 import (
 	"fmt"
 	"net"
-	"net/http"
 	"os"
 
 	"github.com/charmbracelet/log"
+	"github.com/codecrafters-io/http-server-starter-go/app/handlers"
 	"github.com/codecrafters-io/http-server-starter-go/app/responses"
-	"github.com/codecrafters-io/http-server-starter-go/app/utils"
 )
 
 func main() {
 	l, err := net.Listen("tcp", "0.0.0.0:4221")
-	r := &utils.Router{}
-
-	r.Route("GET", "/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("vou me matar hoje as 23:47"))
-	})
 
 	if err != nil {
 		fmt.Println("Failed to bind to port 4221")
@@ -39,7 +33,10 @@ func main() {
 				log.Errorf("error accepting connection: %s", err)
 			}
 
-			r.ServeHTTP(req, conn)
+			fmt.Printf("%s request on %s", req.Method, req.URL.Path)
+
+			handlers.EchoHandler(conn, "oki")
+
 		}(conn)
 	}
 }
