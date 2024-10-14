@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/charmbracelet/log"
-	// "github.com/codecrafters-io/http-server-starter-go/app/handlers"
+	"github.com/codecrafters-io/http-server-starter-go/app/handlers"
 	"github.com/codecrafters-io/http-server-starter-go/app/responses"
 )
 
@@ -34,10 +34,10 @@ func main() {
 				log.Errorf("error accepting connection: %s", err)
 			}
 
-			fmt.Printf("> %s request on %s", req.Method, req.URL.Path)
+			fmt.Printf("> %s request on %s\n", req.Method, req.URL.Path)
 
-			// handlers.EchoHandler(conn, "oki")
-			conn.Write([]byte("vou me matar"))
+			handlers.EchoHandler(conn, "oki")
+			// conn.Write([]byte("vou me matar"))
 
 			fmt.Println("> Response sent.")
 			fmt.Println("> Program finished.")

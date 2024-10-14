@@ -17,4 +17,5 @@ func EchoHandler(conn net.Conn, arg string) {
 	}
 	log.Info("EchoHandler ->", req.URL.Path)
 	responses.RespondWithBody(arg, conn)
+	return
 }
