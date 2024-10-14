@@ -16,7 +16,5 @@ func EchoHandler(conn net.Conn, arg string) {
 		responses.NotFound(conn)
 	}
 	log.Info("EchoHandler ->", req.URL.Path)
-	// responses.RespondWithBody(arg, conn)
-	responses.RespondOK(conn)
-	return
+	responses.RespondWithBody(arg, conn)
 }
