@@ -36,10 +36,12 @@ func main() {
 
 			fmt.Printf("> %s request on %s", req.Method, req.URL.Path)
 
-			handlers.EchoHandler(conn, "oki")
+			// handlers.EchoHandler(conn, "oki")
+			conn.Write([]byte("vou me matar"))
 
 			fmt.Println("> Response sent.")
 			fmt.Println("> Program finished.")
+			
 
 		}(conn)
 	}
