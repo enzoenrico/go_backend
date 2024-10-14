@@ -1,9 +1,8 @@
 package handlers
 
 import (
+	"fmt"
 	"net"
-
-	"github.com/charmbracelet/log"
 
 	"github.com/codecrafters-io/http-server-starter-go/app/responses"
 )
