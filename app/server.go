@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+	fmt.Println(">Program started on http://localhost:4221/")
 	l, err := net.Listen("tcp", "0.0.0.0:4221")
 
 	if err != nil {
@@ -33,7 +34,7 @@ func main() {
 				log.Errorf("error accepting connection: %s", err)
 			}
 
-			log.Logf(0,"> %s request on %s", req.Method, req.URL.Path)
+			fmt.Printf("> %s request on %s", req.Method, req.URL.Path)
 
 			handlers.EchoHandler(conn, "oki")
 

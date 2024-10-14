@@ -5,6 +5,8 @@ import (
 	"net"
 	"net/http"
 	"strconv"
+
+	"github.com/charmbracelet/log"
 )
 
 var crlf = "\r\n"
@@ -45,6 +47,8 @@ func RespondWithBody(body_content string, connection net.Conn) (bool, error) {
 	boiler := "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: "
 	body_len := strconv.Itoa(len(body_content))
 	response := boiler + body_len + crlf + body_content + crlf
+
+	log.Infof("> Sending: %s", response)
 
 	_, err := connection.Write([]byte(response))
 	if err != nil {
