@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"strings"
 
 	"github.com/charmbracelet/log"
 	"github.com/codecrafters-io/http-server-starter-go/app/handlers"
@@ -35,13 +36,20 @@ func main() {
 			}
 
 			fmt.Printf("> %s request on %s\n", req.Method, req.URL.Path)
+			split_path := strings.Split(req.URL.Path, "/")
 
-			handlers.EchoHandler(conn, "oki")
-			// conn.Write([]byte("vou me matar"))
+			fmt.Printf("> Split path: %s \n", split_path[0])
+
+			switch split_path[0] {
+			case "":
+				responses.RespondOK(conn)
+			case "/echo":
+				handlers.EchoHandler(conn, split_path[1])
+				// conn.Write([]byte("vou me matar"))
+			}
 
 			fmt.Println("> Response sent.")
 			fmt.Println("> Program finished.")
-			
 
 		}(conn)
 	}

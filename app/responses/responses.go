@@ -44,7 +44,7 @@ func ExtractRequest(connection net.Conn) (*http.Request, error) {
 func RespondWithBody(body_content string, connection net.Conn) (bool, error) {
 	boiler := "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: "
 	body_len := strconv.Itoa(len(body_content))
-	response := boiler + body_len + crlf + body_content + crlf
+	response := boiler + body_len + crlf + crlf + body_content 
 
 	log.Infof("> Sending: %s", response)
 
