@@ -36,9 +36,10 @@ func main() {
 			}
 
 			fmt.Printf("> %s request on %s\n", req.Method, req.URL.Path)
+
 			split_path := strings.Split(req.URL.Path, "/")
 
-			fmt.Printf("> Split path: %s \n", split_path[0])
+			fmt.Printf("> Split path: %s \n", split_path)
 
 			switch split_path[0] {
 			case "":
