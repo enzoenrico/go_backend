@@ -38,6 +38,9 @@ func main() {
 
 			handlers.EchoHandler(conn, "oki")
 
+			fmt.Println("> Response sent.")
+			fmt.Println("> Program finished.")
+
 		}(conn)
 	}
 }
