@@ -14,9 +14,11 @@ func EchoHandler(conn net.Conn, arg string) {
 
 	req, err := responses.ExtractRequest(conn)
 	if err != nil {
+		fmt.Println(">Request could not be converted! \n")
 		responses.NotFound(conn)
 	}
-	fmt.Println("EchoHandler ->", req.URL.Path)
+
+	fmt.Println("> EchoHandler -> ", req.URL.Path)
 	responses.RespondWithBody(arg, conn)
 	return
 }
