@@ -37,18 +37,19 @@ func main() {
 
 			fmt.Printf("> %s request on %s\n", req.Method, req.URL.Path)
 
-			split_path := strings.Split(req.URL.Path, "/")
+			split_path := strings.Split(strings.Trim(req.URL.Path, "/"), "/")
 			fmt.Printf("> Split path: %s \n", split_path)
-			for _, v := range split_path{
+			for _, v := range split_path {
 				fmt.Printf("> %s \n", v)
 			}
 
 			switch split_path[0] {
 			case "":
 				responses.RespondOK(conn)
-			case "/echo":
-				handlers.EchoHandler(conn, split_path[1])
-				// conn.Write([]byte("vou me matar"))
+			case "echo":
+				handlers.EchoHandler(conn, split_path[len(split_path)-1])
+			default:
+				responses.NotFound(conn)
 			}
 
 			fmt.Println("> Response sent.")
