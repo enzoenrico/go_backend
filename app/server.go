@@ -7,8 +7,8 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/log"
-	"github.com/codecrafters-io/http-server-starter-go/app/handlers"
 	"github.com/codecrafters-io/http-server-starter-go/app/responses"
+	"github.com/codecrafters-io/http-server-starter-go/app/utils"
 )
 
 func main() {
@@ -43,14 +43,7 @@ func main() {
 				fmt.Printf("> %s \n", v)
 			}
 
-			switch split_path[0] {
-			case "":
-				responses.RespondOK(conn)
-			case "echo":
-				handlers.EchoHandler(conn, split_path[len(split_path)-1])
-			default:
-				responses.NotFound(conn)
-			}
+			utils.RouteHandler(conn, split_path)
 
 			fmt.Println("> Response sent.")
 			fmt.Println("> Program finished.")
