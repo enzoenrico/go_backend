@@ -10,7 +10,7 @@ import (
 
 func UserAgentHandler(conn net.Conn, req http.Request) string {
 	defer conn.Close()
-	fmt.Println(req.UserAgent())
+	fmt.Printf("> UserAgent: %s \n", req.UserAgent())
 
 	responses.RespondWithBody("userAgent", conn)
 
