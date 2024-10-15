@@ -27,7 +27,7 @@ IF "%user_commit_message%"=="" (
 )
 
 REM Commit the changes
-git commit -m "%commit_message%"
+git commit -m "%commit_message%" --allow-empty
 
 REM Push the changes to the master branch
 git push origin master
