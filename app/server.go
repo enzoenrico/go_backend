@@ -13,7 +13,6 @@ import (
 
 func main() {
 	fmt.Println(">Program started on http://localhost:4221/")
-	//commit for testing concurrent connections
 	l, err := net.Listen("tcp", "0.0.0.0:4221")
 
 	if err != nil {
