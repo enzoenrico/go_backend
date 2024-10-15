@@ -20,8 +20,8 @@ func RouteHandler(conn net.Conn, split_path []string, request *http.Request) {
 		handlers.UserAgentHandler(conn, *request)
 
 	case "files":
-		if len(split_path) >= 1{
-			handlers.FileHandler(conn, split_path[1])
+		if len(split_path) >= 1 {
+			handlers.FileHandler(conn, split_path[len(split_path)-1])
 		} else {
 			responses.NotFound(conn)
 		}

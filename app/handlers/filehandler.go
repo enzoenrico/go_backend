@@ -14,6 +14,7 @@ func FileHandler(conn net.Conn, filename string) bool {
 		return false
 	}
 
+	fmt.Println("[+]Accessing the tmp directory:")
 	for _, file := range tmp_dir {
 		fmt.Printf("> /tmp/%s \n", file.Name())
 	}

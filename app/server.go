@@ -46,12 +46,12 @@ func main() {
 
 			split_path := strings.Split(strings.Trim(req.URL.Path, "/"), "/")
 
-			fmt.Printf("> Split path: %s \n", split_path)
+			fmt.Printf("\t> Split path: %s \n", split_path)
 
-			for _, v := range split_path {
+			// for _, v := range split_path {
 
-				fmt.Printf("> %s \n", v)
-			}
+			// 	fmt.Printf("\t> %s \n", v)
+			// }
 
 			utils.RouteHandler(conn, split_path, req)
 
