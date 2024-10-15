@@ -27,6 +27,13 @@ func main() {
 		}
 
 		go func(conn net.Conn) {
+			// defer func() {
+			// 	if err := conn.Close(); err != nil {
+			// 		log.Errorf("error closing connection: %s", err)
+			// 	} else {
+			// 		fmt.Println("> Connection closed.")
+			// 	}
+			// }()
 			defer conn.Close()
 
 			req, err := responses.ExtractRequest(conn)
@@ -38,7 +45,9 @@ func main() {
 			fmt.Printf("> %s request on %s\n", req.Method, req.URL.Path)
 
 			split_path := strings.Split(strings.Trim(req.URL.Path, "/"), "/")
+
 			fmt.Printf("> Split path: %s \n", split_path)
+
 			for _, v := range split_path {
 
 				fmt.Printf("> %s \n", v)
@@ -47,7 +56,6 @@ func main() {
 			utils.RouteHandler(conn, split_path, req)
 
 			fmt.Println("> Response sent.")
-			fmt.Println("> Program finished.")
 		}(conn)
 	}
 }
