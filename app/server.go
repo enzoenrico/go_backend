@@ -40,14 +40,14 @@ func main() {
 			split_path := strings.Split(strings.Trim(req.URL.Path, "/"), "/")
 			fmt.Printf("> Split path: %s \n", split_path)
 			for _, v := range split_path {
+
 				fmt.Printf("> %s \n", v)
 			}
 
-			utils.RouteHandler(conn, split_path)
+			utils.RouteHandler(conn, split_path, req)
 
 			fmt.Println("> Response sent.")
 			fmt.Println("> Program finished.")
-
 		}(conn)
 	}
 }
