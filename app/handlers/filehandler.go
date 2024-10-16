@@ -15,6 +15,7 @@ func FileHandler(conn net.Conn, filename string) {
 	fmt.Println("[+]Accessing the tmp directory:")
 	data, err := os.ReadFile(dir + filename)
 	if err != nil {
+        responses.NotFound(conn)
 		return
 	}
     responses.RespondWithFile(data, conn)
