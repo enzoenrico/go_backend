@@ -11,7 +11,7 @@ func FileHandler(conn net.Conn, filename string) {
 	// TODO: implement file handling
 	tmp_dir, err := os.ReadDir("/tmp")
 	if err != nil {
-		return 
+		return
 	}
 
 	fmt.Println("[+]Accessing the tmp directory:")
@@ -19,7 +19,13 @@ func FileHandler(conn net.Conn, filename string) {
 		fmt.Printf("> /tmp/%s \n", file.Name())
 		if file.Name() == filename {
 			fmt.Printf("[!]File found! \n \r %s \n", file.Name())
+			data, err := os.ReadFile(fmt.Sprintf("/tmp/%s", file.Name()))
+			if err != nil {
+				return
+			}
+			conn.Write(data)
+			return
 		}
+		return
 	}
-	return 
 }
