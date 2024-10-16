@@ -27,17 +27,11 @@ func RouteHandler(conn net.Conn, split_path []string, request *http.Request) {
 				handlers.GetFileHandler(conn, split_path[len(split_path)-1])
 			}
 			if request.Method == "POST" {
-				response, err := bufio.NewReader(request.Body).ReadBytes('\n')
-				if err != nil {
-					fmt.Println(err)
-					return
-				}
+				response, _ := bufio.NewReader(request.Body).ReadBytes('\n')
 				fmt.Printf("> Body content: \n\t %s \n", string(response))
 				// TODO: Read body content
 				handlers.PostFileHandler(conn, split_path[len(split_path)-1], response)
 			}
-		} else {
-			responses.NotFound(conn)
 		}
 	default:
 		responses.NotFound(conn)
