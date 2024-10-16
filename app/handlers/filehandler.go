@@ -8,24 +8,13 @@ import (
 
 func FileHandler(conn net.Conn, filename string) {
 	defer conn.Close()
-	// TODO: implement file handling
-	tmp_dir, err := os.ReadDir("/tmp")
+	dir := os.Args[2]
+
+	fmt.Println("[+]Accessing the tmp directory:")
+	data, err := os.ReadFile(dir + filename)
 	if err != nil {
 		return
 	}
-
-	fmt.Println("[+]Accessing the tmp directory:")
-	for _, file := range tmp_dir {
-		fmt.Printf("> /tmp/%s \n", file.Name())
-		if file.Name() == filename {
-			fmt.Printf("[!]File found! \n \r %s \n", file.Name())
-			data, err := os.ReadFile(fmt.Sprintf("/tmp/%s", file.Name()))
-			if err != nil {
-				return
-			}
-			conn.Write(data)
-			return
-		}
-		return
-	}
+	conn.Write(data)
+	return
 }
