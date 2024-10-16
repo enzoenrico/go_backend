@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"net"
 	"os"
-
-	"github.com/codecrafters-io/http-server-starter-go/app/responses"
 )
 
 func FileHandler(conn net.Conn, filename string) {
