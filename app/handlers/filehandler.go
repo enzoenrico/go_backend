@@ -39,5 +39,5 @@ func PostFileHandler(conn net.Conn, filename string, body []byte) {
 	crlf := "\r\n"
 	response := "HTTP/1.1 201 Created\r\nContent-Length:"
 
-	conn.Write([]byte(response + strconv.Itoa(len(body)) + crlf + crlf))
+	conn.Write(append([]byte(response + strconv.Itoa(len(body)) + crlf + crlf), body...))
 }
