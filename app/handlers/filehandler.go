@@ -29,6 +29,12 @@ func PostFileHandler(conn net.Conn, filename string, body []byte) {
 
 	//acc create the file on system
 	fmt.Printf("> Creating: %s \n", dir+filename)
+	fmt.Printf("> Reading: %s \n", dir)
+	files, _ := os.ReadDir(dir)
+	for _, f := range files {
+		fmt.Printf("\r > %s", f)
+	}
+
 	err := os.WriteFile(dir+filename, body, 0644)
 	if err != nil {
 		responses.NotFound(conn)
