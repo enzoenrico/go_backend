@@ -13,7 +13,7 @@ func FileHandler(conn net.Conn, filename string) {
 	// TODO: implement file handling
 	tmp_dir, err := os.ReadDir("/tmp")
 	if err != nil {
-		return false
+		return 
 	}
 
 	fmt.Println("[+]Accessing the tmp directory:")
