@@ -39,7 +39,7 @@ func PostFileHandler(conn net.Conn, filename string, body []byte) {
 	fmt.Printf("> Reading: %s \n", dir)
 	files, _ := os.ReadDir(dir)
 	for _, f := range files {
-		fmt.Printf("\r > %s", f)
+		fmt.Printf("\r > %s\n", f)
 	}
 	crlf := "\r\n"
 	response := "HTTP/1.1 201 Created\r\nContent-Length:"
