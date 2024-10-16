@@ -21,7 +21,15 @@ func RouteHandler(conn net.Conn, split_path []string, request *http.Request) {
 
 	case "files":
 		if len(split_path) >= 1 {
-			handlers.FileHandler(conn, split_path[len(split_path)-1])
+			if request.Method == "GET" {
+				handlers.GetFileHandler(conn, split_path[len(split_path)-1])
+			}
+			if request.Method == "POST" {
+				req_body := make([]byte, 0)
+				request.Body.Read(req_body)
+				request.Body.Close()
+				handlers.PostFileHandler(conn, split_path[len(split_path)-1], req_body)
+			}
 		} else {
 			responses.NotFound(conn)
 		}

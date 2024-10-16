@@ -70,3 +70,11 @@ func RespondWithFile(content []byte, connection net.Conn) (bool, error) {
 	}
 	return true, nil
 }
+
+func ReadRequestBody(req *http.Request) ([]byte, error) {
+	var res []byte
+	if _, err := req.Body.Read(res); err != nil {
+		return []byte{}, err
+	}
+	return res, nil
+}
