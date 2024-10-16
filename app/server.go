@@ -48,11 +48,6 @@ func main() {
 
 			fmt.Printf("\t> Split path: %s \n", split_path)
 
-			// for _, v := range split_path {
-
-			// 	fmt.Printf("\t> %s \n", v)
-			// }
-
 			utils.RouteHandler(conn, split_path, req)
 
 			fmt.Println("> Response sent.")
