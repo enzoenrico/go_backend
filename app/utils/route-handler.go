@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"bufio"
 	"fmt"
 	"net"
 	"net/http"
@@ -26,9 +27,14 @@ func RouteHandler(conn net.Conn, split_path []string, request *http.Request) {
 				handlers.GetFileHandler(conn, split_path[len(split_path)-1])
 			}
 			if request.Method == "POST" {
-				fmt.Printf("> Body content: \n\t %s \n", request.Body)
+				response, err := bufio.NewReader(request.Body).ReadBytes('\n')
+				if err != nil {
+					fmt.Println(err)
+					return
+				}
+				fmt.Printf("> Body content: \n\t %s \n", string(response))
 				// TODO: Read body content
-				handlers.PostFileHandler(conn, split_path[len(split_path)-1], []byte("penis"))
+				handlers.PostFileHandler(conn, split_path[len(split_path)-1], response)
 			}
 		} else {
 			responses.NotFound(conn)
