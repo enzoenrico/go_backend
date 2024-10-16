@@ -58,7 +58,7 @@ func RespondWithBody(body_content string, connection net.Conn) (bool, error) {
 func RespondWithFile(content []byte, connection net.Conn) (bool, error) {
 	boiler := "HTTP/1.1 200 OK\r\nContent-Type: application/octet-stream\r\nContent-Length: "
 	contentLen := strconv.Itoa(len(content))
-	response := boiler + contentLen + crlf + crlf
+	response := boiler + contentLen + crlf + crlf + string(content)
 
 	// Log information about the response
 	log.Infof("Sending binary data: Content-Length: %s", contentLen)
@@ -68,12 +68,5 @@ func RespondWithFile(content []byte, connection net.Conn) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-
-	// Send the actual file content
-	_, err = connection.Write(content)
-	if err != nil {
-		return false, err
-	}
-
 	return true, nil
 }
