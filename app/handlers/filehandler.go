@@ -2,8 +2,11 @@ package handlers
 
 import (
 	"fmt"
+	"log"
 	"net"
 	"os"
+
+	"github.com/codecrafters-io/http-server-starter-go/app/responses"
 )
 
 func FileHandler(conn net.Conn, filename string) {
@@ -15,6 +18,6 @@ func FileHandler(conn net.Conn, filename string) {
 	if err != nil {
 		return
 	}
-	conn.Write(data)
+    responses.RespondWithFile(data, conn)
 	return
 }
