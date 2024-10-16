@@ -27,14 +27,15 @@ func PostFileHandler(conn net.Conn, filename string, body []byte) {
 	defer conn.Close()
 	dir := os.Args[2]
 
-    //acc create the file on system
-    err := os.WriteFile(dir+filename, body, 0644)
-    if err != nil{
-        responses.NotFound(conn)
-    }
-    
-    crlf := "\r\n"
-    response := "HTTP/1.1 201 Created\r\nContent-Length:"
+	//acc create the file on system
+	fmt.Printf("> Creating: %s \n", dir+filename)
+	err := os.WriteFile(dir+filename, body, 0644)
+	if err != nil {
+		responses.NotFound(conn)
+	}
 
-    conn.Write([]byte(response + strconv.Itoa(len(body)) + crlf + crlf))
+	crlf := "\r\n"
+	response := "HTTP/1.1 201 Created\r\nContent-Length:"
+
+	conn.Write([]byte(response + strconv.Itoa(len(body)) + crlf + crlf))
 }
