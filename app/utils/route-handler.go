@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"fmt"
 	"net"
 	"net/http"
 
@@ -25,10 +26,9 @@ func RouteHandler(conn net.Conn, split_path []string, request *http.Request) {
 				handlers.GetFileHandler(conn, split_path[len(split_path)-1])
 			}
 			if request.Method == "POST" {
-				req_body := make([]byte, 0)
-				request.Body.Read(req_body)
-				request.Body.Close()
-				handlers.PostFileHandler(conn, split_path[len(split_path)-1], req_body)
+				fmt.Printf("> Body content: \n\t %s \n", request.Body)
+				// TODO: Read body content
+				handlers.PostFileHandler(conn, split_path[len(split_path)-1], []byte("penis"))
 			}
 		} else {
 			responses.NotFound(conn)
