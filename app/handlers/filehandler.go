@@ -25,7 +25,7 @@ func GetFileHandler(conn net.Conn, filename string) {
 
 func PostFileHandler(conn net.Conn, filename string, body []byte) {
 	defer conn.Close()
-    fmt.Println("> Initiating PostFileHandler")
+	fmt.Println("> Initiating PostFileHandler")
 	dir := os.Args[2]
 
 	//acc create the file on system
@@ -36,7 +36,7 @@ func PostFileHandler(conn net.Conn, filename string, body []byte) {
 	if err != nil {
 		responses.NotFound(conn)
 	}
-
+	fmt.Println("gonna kms")
 	crlf := "\r\n"
 	response := "HTTP/1.1 201 Created\r\nContent-Length:"
 
