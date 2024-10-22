@@ -36,7 +36,6 @@ func PostFileHandler(conn net.Conn, filename string, body []byte) {
 	if err != nil {
 		responses.NotFound(conn)
 	}
-	fmt.Println("gonna kms")
 	crlf := "\r\n"
 	response := "HTTP/1.1 201 Created\r\nContent-Length:"
 
