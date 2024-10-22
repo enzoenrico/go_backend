@@ -41,7 +41,7 @@ func ExtractRequest(connection net.Conn) (*http.Request, error) {
 	return response, nil
 }
 
-func RespondWithBody(body_content string, connection net.Conn) (bool, error) {
+func RespondWithBody(body_content string, connection net.Conn, headers []string) (bool, error) {
 	boiler := "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: "
 	body_len := strconv.Itoa(len(body_content))
 	response := boiler + body_len + crlf + crlf + body_content
