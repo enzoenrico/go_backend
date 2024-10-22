@@ -31,6 +31,7 @@ func RouteHandler(conn net.Conn, split_path []string, request *http.Request) {
 				fmt.Printf("> Body content: \n\t %s \n", string(response))
 				// TODO: Read body content
 				handlers.PostFileHandler(conn, split_path[len(split_path)-1], response)
+				fmt.Print("oi")
 			}
 		}
 	default:
