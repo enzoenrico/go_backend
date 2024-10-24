@@ -12,6 +12,10 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+func GetAllPosts(c echo.Context) error {
+	return c.JSON(http.StatusOK, database.PostsDB)
+}
+
 func GetPostByID(c echo.Context) error {
 	id := c.Param("id")
 	fmt.Println("ID: ", id)

@@ -1,4 +1,5 @@
 # go_backend
+
 this project is being developed for the backend course @pucpr
 
 ## project structure
@@ -18,7 +19,7 @@ in this project, we're aiming to get the best possible performance, not giving u
 
 - [ ] SQLite integration
 - [ ] Swagger
-- [ ] Testing
+- [+ -] Testing (kinda....)
 - [ ] Logging
 - [ ] Authentication / middleware
 - [x] Routing

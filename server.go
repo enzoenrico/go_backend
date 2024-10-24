@@ -37,14 +37,17 @@ func main() {
 
 	// ========== USER ROUTES ==========
 	//FIX: users returning base64
-    // FIXED: actually retarded error, wasn't importing users into the db and the error didn't return a stck trace
-    // for the love of God please implement logs
+	// FIXED: actually retarded error, wasn't importing users into the db and the error didn't return a stck trace
+	// for the love of God please implement logs
+
 	e.GET("/all_users", handlers.GetAllUsers)
 	e.GET("/users/:id", handlers.GetUserByID)
 	e.POST("/users", handlers.PostNewUser)
 
 	// =========POST ROUTES =============
-	// e.GET("/posts/:id", handlers.GetPostByID)
+	e.GET("/all_posts", handlers.GetAllPosts)
+	e.GET("/posts/:id", handlers.GetPostByID)
+	e.POST("/posts", handlers.NewPost)
 
 	// database.PostsDB["first"] = posts.Post{
 	// 	ID:        0,
