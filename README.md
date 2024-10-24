@@ -1,5 +1,4 @@
 # go_backend
-
 this project is being developed for the backend course @pucpr
 
 ## project structure
@@ -17,15 +16,19 @@ in this project, we're aiming to get the best possible performance, not giving u
 
 ## requirements for the api
 
+- [ ] SQLite integration
 - [ ] Swagger
 - [ ] Testing
 - [ ] Logging
-- [ ] Authentication
+- [ ] Authentication / middleware
 - [x] Routing
 
 ## todo
 
-- Update the readme project structure
-- Make readme pretty...
-- Add the sqlite3 support (i.e. fix the gcc error)
-- add propper logging
+- [ ] Add the sqlite3 support (i.e. fix the gcc error)
+- [ ] add middleware for auth
+- [ ] add user role changing by file (.config) (??)
+- [ ] add propper logging (zap!)
+
+- [x] make database.go acc file with dbs
+- [x] create post handlers and operations

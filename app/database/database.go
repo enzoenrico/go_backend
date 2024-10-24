@@ -9,8 +9,14 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/enzoenrico/go_backend/app/posts"
+	"github.com/enzoenrico/go_backend/app/users"
 	_ "github.com/mattn/go-sqlite3"
 )
+
+var UserDB = make(map[string]users.User)
+
+var PostsDB = make(map[string]posts.Post)
 
 func GetDB(dbName string) (*sql.DB, error) {
 	db, err := sql.Open("sqlite3", strings.Join([]string{"./", dbName, ".db"}, ""))

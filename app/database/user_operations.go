@@ -6,7 +6,6 @@ import (
 	"github.com/enzoenrico/go_backend/app/users"
 )
 
-var UserDB = make(map[string]users.User)
 
 func GetUser(user_hash string) (users.User, error) {
 	user, ok := UserDB[user_hash]

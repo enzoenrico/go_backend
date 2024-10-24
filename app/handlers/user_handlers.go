@@ -11,13 +11,13 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func UserGetAllHandler(c echo.Context) error {
+func GetAllUsers(c echo.Context) error {
 	jsonData, _ := json.MarshalIndent(database.UserDB, "", "    ")
-	c.JSON(http.StatusOK, jsonData)
-	return nil
+	fmt.Printf("\r> Returning users: \n ")
+	return c.String(http.StatusOK, string(jsonData))
 }
 
-func UserGetHandler(c echo.Context) error {
+func GetUserByID(c echo.Context) error {
 	found_user, err := database.GetUser(c.Param("id"))
 	if err != nil {
 		// como implementamos um sistema robusto de logging?
@@ -26,7 +26,7 @@ func UserGetHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, found_user)
 }
 
-func UserPostHandler(c echo.Context) error {
+func PostNewUser(c echo.Context) error {
 	body_content := extract_user_from_request(c)
 	new_user := users.User{
 		Name:     body_content.Name,
