@@ -13,7 +13,7 @@ import (
 
 func GetAllUsers(c echo.Context) error {
 	jsonData, _ := json.MarshalIndent(database.UserDB, "", "    ")
-	fmt.Printf("\r> Returning users: \n ")
+	fmt.Printf("\r> Returning users: %+v \n ", string(jsonData))
 	return c.String(http.StatusOK, string(jsonData))
 }
 

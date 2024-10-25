@@ -7,6 +7,7 @@ import (
 
 	"github.com/enzoenrico/go_backend/app/handlers"
 	"github.com/labstack/echo/v4"
+	// "github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
@@ -25,22 +26,35 @@ func main() {
 
 	defer e.Close()
 
+	// e.Use(middleware.CORS())
+	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			c.Response().Header().Set("Access-Control-Allow-Origin", "*")
+			c.Response().Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+			c.Response().Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+			return next(c)
+		}
+	})
+
+	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			if c.Request().Method == "OPTIONS" {
+				return c.NoContent(204)
+			}
+			return next(c)
+		}
+	})
+
 	// handler for the / route
 	e.GET("/", func(c echo.Context) error {
-		// res, err := database.CreateTable(db, "teste", []string{"first", "second"})
-		// if err != nil {
-		// 	fmt.Println(err)
-		// }
-		// fmt.Println(res)
+		fmt.Printf("> Server starting on port 5000")
 		return c.String(200, "ok")
 	})
 
 	// ========== USER ROUTES ==========
-	//FIX: users returning base64
-	// FIXED: actually retarded error, wasn't importing users into the db and the error didn't return a stck trace
 	// for the love of God please implement logs
 
-	e.GET("/all_users", handlers.GetAllUsers)
+	e.GET("/users", handlers.GetAllUsers)
 	e.GET("/users/:id", handlers.GetUserByID)
 	e.POST("/users", handlers.PostNewUser)
 
@@ -49,13 +63,6 @@ func main() {
 	e.GET("/posts/:id", handlers.GetPostByID)
 	e.POST("/posts", handlers.NewPost)
 
-	// database.PostsDB["first"] = posts.Post{
-	// 	ID:        0,
-	// 	Title:     "First Post",
-	// 	Content:   "This is the first post.",
-	// 	User:      users.User{},
-	// 	Timestamp: 0,
-	// }
 	//listen in port 5k and log it
 	e.Logger.Fatal(e.Start(":5000"))
 }

@@ -24,12 +24,12 @@ in this project, we're aiming to get the best possible performance, not giving u
 - [ ] Authentication / middleware
 - [x] Routing
 
-## todo
+## todo / next steps
 
-- [ ] Add the sqlite3 support (i.e. fix the gcc error)
-- [ ] add middleware for auth
-- [ ] add user role changing by file (.config) (??)
 - [ ] add propper logging (zap!)
+- [ ] add middleware for auth
+- [ ] Add the sqlite3 support (i.e. fix the gcc error)
+- [ ] add user role changing by file (.config) (??)
 
 - [x] make database.go acc file with dbs
 - [x] create post handlers and operations

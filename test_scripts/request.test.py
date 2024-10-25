@@ -9,26 +9,30 @@ def get_user_data():
         "email": res["email"],
         "password": res["password"],
     }
+    # req.post("http://localhost:5000/users", json=user_ob)
     return user_ob
 
 
 def query_user_api():
     user = get_user_data()
+    # print("User: ")
+    # print(user)
     res = req.post("http://localhost:5000/users", json=user)
     print(res.json())
+    return user
 
 
-def query_posts_api():
+def query_posts_api(user):
     post = {
         "id": 0,
         "title": "Test Title",
         "body": "Test Body",
-        "user": get_user_data(),
+        "user": user,
         "timestamp": 10,
     }
     res = req.post("http://localhost:5000/posts", json=post)
     print(res.json())
 
 
-# query_user_api()
-query_posts_api()
+user = query_user_api()
+query_posts_api(user)
