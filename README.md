@@ -30,7 +30,7 @@ in this project, we're aiming to get the best possible performance, not giving u
 ## todo / next steps
 
 - [ ] add propper logging (zap!)
-- [ ] add middleware for auth
+- [x] add middleware for auth
 - [ ] Add the ```sqlite3``` support (i.e. fix the gcc error)
 - [ ] add user role changing by file (.config) (??)
 

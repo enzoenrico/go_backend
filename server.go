@@ -7,7 +7,7 @@ import (
 
 	"github.com/enzoenrico/go_backend/app/handlers"
 	"github.com/labstack/echo/v4"
-	// "github.com/labstack/echo/v4/middleware"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
@@ -26,7 +26,7 @@ func main() {
 
 	defer e.Close()
 
-	// e.Use(middleware.CORS())
+	// middleware CORS
 	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			c.Response().Header().Set("Access-Control-Allow-Origin", "*")
@@ -44,6 +44,11 @@ func main() {
 			return next(c)
 		}
 	})
+
+	// Middleware
+	e.GET("/users", handlers.GetAllUsers, middleware.JWTWithConfig(middleware.JWTConfig{
+		SigningKey: []byte("your-256-bit-secret"),
+	}))
 
 	// handler for the / route
 	e.GET("/", func(c echo.Context) error {
@@ -63,6 +68,6 @@ func main() {
 	e.GET("/posts/:id", handlers.GetPostByID)
 	e.POST("/posts", handlers.NewPost)
 
-	//listen in port 5k and log it
+	// listen in port 5k and log it
 	e.Logger.Fatal(e.Start(":5000"))
 }
