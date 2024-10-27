@@ -1,0 +1,24 @@
+{
+    "jwt_secret": "your_jwt_secret_key",
+    "user_roles": {
+      "admin": {
+        "permissions": [
+          "create_user",
+          "edit_user",
+          "delete_user",
+          "manage_settings",
+          "view_reports"
+        ]
+      },
+      "regular_user": {
+        "permissions": [
+          "view_profile",
+          "edit_profile"
+        ]
+      }  
+    }
+  }
+  
+
+
+

@@ -5,6 +5,7 @@ import (
 
 	// "github.com/enzoenrico/go_backend/app/database"
 
+	"github.com/enzoenrico/go_backend/app"
 	"github.com/enzoenrico/go_backend/app/handlers"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -22,8 +23,15 @@ func main() {
 	// }
 	// defer db.Close()
 
-	e := echo.New()
+	config, err := app.LoadConfig()
+	if err != nil {
+		fmt.Println("> Error loading config:", err)
+		return
+	}
 
+	fmt.Println("JWT Secret:", config.JwtSecret)
+
+	e := echo.New()
 	defer e.Close()
 
 	// middleware CORS
@@ -47,7 +55,7 @@ func main() {
 
 	// Middleware
 	e.GET("/users", handlers.GetAllUsers, middleware.JWTWithConfig(middleware.JWTConfig{
-		SigningKey: []byte("your-256-bit-secret"),
+		SigningKey: []byte(config.JwtSecret),
 	}))
 
 	// handler for the / route
