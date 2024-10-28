@@ -3,19 +3,33 @@ package main
 import (
 	"fmt"
 
-	// "github.com/enzoenrico/go_backend/app/database"
-
 	"github.com/enzoenrico/go_backend/app"
 	"github.com/enzoenrico/go_backend/app/handlers"
+	"github.com/enzoenrico/go_backend/app/logger"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"go.uber.org/zap"
 )
 
 func main() {
-	fmt.Print("> Starting the server")
+	fmt.Println("> Starting the server")
+
+	err := logger.InitLogger()
+	if err != nil {
+		fmt.Println("Erro ao inicializar o logger:", err)
+		return
+	}
+	defer logger.Logger.Sync()
+
+	logger.Logger.Info("Server is starting...")
+
+	config, err := app.LoadConfig()
+	if err != nil {
+		logger.Logger.Error("Error loading config", zap.Error(err))
+		return
+	}
 
 	// check app/database/database.go for why the code is commented
-
 	// db, err := database.GetDB("test_db")
 	// if err != nil {
 	// 	fmt.Println("> Error connecting to the database:%.*", err)
@@ -23,18 +37,12 @@ func main() {
 	// }
 	// defer db.Close()
 
-	config, err := app.LoadConfig()
-	if err != nil {
-		fmt.Println("> Error loading config:", err)
-		return
-	}
-
-	fmt.Println("JWT Secret:", config.JwtSecret)
+	logger.Logger.Info("Config loaded successfully", zap.String("JWT Secret", config.JwtSecret))
 
 	e := echo.New()
 	defer e.Close()
 
-	// middleware CORS
+	// CORS middleware
 	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			c.Response().Header().Set("Access-Control-Allow-Origin", "*")
@@ -44,6 +52,7 @@ func main() {
 		}
 	})
 
+	// OPTIONS method handler
 	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			if c.Request().Method == "OPTIONS" {
@@ -53,29 +62,28 @@ func main() {
 		}
 	})
 
-	// Middleware
+	// JWT-protected route
 	e.GET("/users", handlers.GetAllUsers, middleware.JWTWithConfig(middleware.JWTConfig{
 		SigningKey: []byte(config.JwtSecret),
 	}))
 
-	// handler for the / route
+	// Root route
 	e.GET("/", func(c echo.Context) error {
-		fmt.Printf("> Server starting on port 5000")
+		logger.Logger.Info("Root endpoint accessed")
 		return c.String(200, "ok")
 	})
 
-	// ========== USER ROUTES ==========
-	// for the love of God please implement logs
-
+	// User routes
 	e.GET("/users", handlers.GetAllUsers)
 	e.GET("/users/:id", handlers.GetUserByID)
 	e.POST("/users", handlers.PostNewUser)
 
-	// =========POST ROUTES =============
+	// Post routes
 	e.GET("/all_posts", handlers.GetAllPosts)
 	e.GET("/posts/:id", handlers.GetPostByID)
 	e.POST("/posts", handlers.NewPost)
 
-	// listen in port 5k and log it
+	// Start server on port 5000
+	logger.Logger.Info("Listening on port 5000")
 	e.Logger.Fatal(e.Start(":5000"))
 }
