@@ -7,7 +7,8 @@ import (
 	"github.com/enzoenrico/go_backend/app/handlers"
 	"github.com/enzoenrico/go_backend/app/logger"
 	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
+
+	// "github.com/labstack/echo/v4/middleware"
 	"go.uber.org/zap"
 )
 
@@ -64,9 +65,13 @@ func main() {
 	})
 
 	// JWT-protected route
-	e.GET("/ponga", handlers.GetAllUsers, middleware.JWTWithConfig(middleware.JWTConfig{
-		SigningKey: []byte(config.JwtSecret),
-	}))
+	// e.GET("/users", handlers.GetAllUsers, middleware.JWTWithConfig(middleware.JWTConfig{
+	// 	SigningKey: []byte(config.JwtSecret),
+	// }))
+
+	userGroup := e.Group("/users", func(next echo.HandlerFunc) echo.HandlerFunc {
+		return next
+	})
 
 	// Root route
 	e.GET("/", func(c echo.Context) error {
@@ -75,9 +80,9 @@ func main() {
 	})
 
 	// User routes
-	e.GET("/users", handlers.GetAllUsers)
-	e.GET("/users/:id", handlers.GetUserByID)
-	e.POST("/users", handlers.PostNewUser)
+	userGroup.GET("", handlers.GetAllUsers)
+	userGroup.GET("/:id", handlers.GetUserByID)
+	userGroup.POST("", handlers.PostNewUser)
 
 	// Post routes
 	e.GET("/posts", handlers.GetAllPosts)
