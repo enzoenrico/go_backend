@@ -1,6 +1,5 @@
 import requests as req
 
-
 def get_user_data():
     res = req.get("https://random-data-api.com/api/v2/users").json()
     user_ob = {

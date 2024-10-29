@@ -38,8 +38,12 @@
     <div class="here">
 
     </div>
+    <div class="here_too">
+
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
+
             const userList = document.querySelector('.here')
             fetch('http://localhost:5000/users')
                 .then(response => response.text())
@@ -52,6 +56,18 @@
                     })
                 })
                 .catch(error => console.error('Error fetching users:', error));
+
+            const postList = document.querySelector('.here_too')
+            fetch('http://localhost:5000/posts')
+                .then(res => res.text())
+                .then(data => {
+                    data.split(',').forEach(post => {
+                        const thang = document.createElement('li')
+                        thang.className = 'element'
+                        thang.innerHTML = post
+                        postList.appendChild(thang)
+                    })
+                })
         });
 
     </script>

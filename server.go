@@ -14,8 +14,9 @@ import (
 func main() {
 	fmt.Println("> Starting the server")
 
-	err := logger.InitLogger()
+	err := logger.InitLogger("./logs/logs.json")
 	if err != nil {
+		//funny how we log the logger not logging, lol
 		fmt.Println("Erro ao inicializar o logger:", err)
 		return
 	}
@@ -63,14 +64,14 @@ func main() {
 	})
 
 	// JWT-protected route
-	e.GET("/users", handlers.GetAllUsers, middleware.JWTWithConfig(middleware.JWTConfig{
+	e.GET("/ponga", handlers.GetAllUsers, middleware.JWTWithConfig(middleware.JWTConfig{
 		SigningKey: []byte(config.JwtSecret),
 	}))
 
 	// Root route
 	e.GET("/", func(c echo.Context) error {
 		logger.Logger.Info("Root endpoint accessed")
-		return c.String(200, "ok")
+		return c.File("./index.html")
 	})
 
 	// User routes
@@ -79,7 +80,7 @@ func main() {
 	e.POST("/users", handlers.PostNewUser)
 
 	// Post routes
-	e.GET("/all_posts", handlers.GetAllPosts)
+	e.GET("/posts", handlers.GetAllPosts)
 	e.GET("/posts/:id", handlers.GetPostByID)
 	e.POST("/posts", handlers.NewPost)
 
