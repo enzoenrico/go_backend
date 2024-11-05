@@ -13,3 +13,82 @@
 {"level":"info","timestamp":"2024-10-29T19:53:34.383-0300","caller":"go_backend/server.go:42","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
 {"level":"info","timestamp":"2024-10-29T19:53:34.384-0300","caller":"go_backend/server.go:93","msg":"Listening on port 5000"}
 {"level":"info","timestamp":"2024-10-29T19:55:21.132-0300","caller":"go_backend/server.go:78","msg":"Root endpoint accessed"}
+{"level":"info","timestamp":"2024-11-04T20:54:43.692-0300","caller":"go_backend/server.go:26","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:54:43.693-0300","caller":"go_backend/server.go:42","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:54:43.693-0300","caller":"go_backend/server.go:90","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T20:55:05.402-0300","caller":"go_backend/server.go:26","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:55:05.402-0300","caller":"go_backend/server.go:42","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:55:05.403-0300","caller":"go_backend/server.go:90","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T20:56:57.833-0300","caller":"go_backend/server.go:26","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:56:57.847-0300","caller":"go_backend/server.go:42","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:56:57.847-0300","caller":"go_backend/server.go:90","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T20:56:59.555-0300","caller":"go_backend/server.go:26","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:56:59.556-0300","caller":"go_backend/server.go:42","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:56:59.556-0300","caller":"go_backend/server.go:90","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T20:57:45.996-0300","caller":"go_backend/server.go:26","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:57:45.997-0300","caller":"go_backend/server.go:42","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:57:45.998-0300","caller":"go_backend/server.go:90","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T20:57:53.229-0300","caller":"go_backend/server.go:26","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:57:53.231-0300","caller":"go_backend/server.go:42","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:57:53.232-0300","caller":"go_backend/server.go:90","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T20:57:56.276-0300","caller":"go_backend/server.go:26","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:57:56.279-0300","caller":"go_backend/server.go:42","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:57:56.280-0300","caller":"go_backend/server.go:90","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T20:57:59.647-0300","caller":"go_backend/server.go:26","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:57:59.648-0300","caller":"go_backend/server.go:42","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:57:59.649-0300","caller":"go_backend/server.go:90","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T20:58:05.545-0300","caller":"go_backend/server.go:26","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:58:05.547-0300","caller":"go_backend/server.go:42","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:58:05.547-0300","caller":"go_backend/server.go:90","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T20:58:22.550-0300","caller":"go_backend/server.go:26","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:58:22.552-0300","caller":"go_backend/server.go:42","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:58:22.552-0300","caller":"go_backend/server.go:90","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T20:59:01.600-0300","caller":"go_backend/server.go:28","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:59:01.601-0300","caller":"go_backend/server.go:44","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:59:01.601-0300","caller":"go_backend/server.go:103","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T20:59:09.384-0300","caller":"go_backend/server.go:28","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:59:09.385-0300","caller":"go_backend/server.go:44","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:59:09.385-0300","caller":"go_backend/server.go:103","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T20:59:11.145-0300","caller":"go_backend/server.go:28","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:59:11.147-0300","caller":"go_backend/server.go:44","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:59:11.147-0300","caller":"go_backend/server.go:103","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T20:59:36.979-0300","caller":"go_backend/server.go:28","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T20:59:36.982-0300","caller":"go_backend/server.go:44","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T20:59:36.983-0300","caller":"go_backend/server.go:103","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T21:00:24.342-0300","caller":"go_backend/server.go:29","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T21:00:24.344-0300","caller":"go_backend/server.go:45","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T21:00:24.345-0300","caller":"go_backend/server.go:110","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T21:00:29.228-0300","caller":"go_backend/server.go:29","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T21:00:29.229-0300","caller":"go_backend/server.go:45","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T21:00:29.229-0300","caller":"go_backend/server.go:110","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T21:00:48.882-0300","caller":"go_backend/server.go:30","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T21:00:48.883-0300","caller":"go_backend/server.go:46","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T21:00:48.884-0300","caller":"go_backend/server.go:112","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T21:02:15.778-0300","caller":"go_backend/server.go:30","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T21:02:15.779-0300","caller":"go_backend/server.go:46","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T21:02:15.780-0300","caller":"go_backend/server.go:112","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T21:02:25.336-0300","caller":"go_backend/server.go:30","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T21:02:25.337-0300","caller":"go_backend/server.go:46","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T21:02:25.337-0300","caller":"go_backend/server.go:112","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T21:02:33.748-0300","caller":"go_backend/server.go:30","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T21:02:33.749-0300","caller":"go_backend/server.go:46","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T21:02:33.749-0300","caller":"go_backend/server.go:112","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T21:02:54.035-0300","caller":"go_backend/server.go:30","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T21:02:54.036-0300","caller":"go_backend/server.go:46","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T21:02:54.036-0300","caller":"go_backend/server.go:113","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T21:03:14.746-0300","caller":"go_backend/server.go:30","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T21:03:14.747-0300","caller":"go_backend/server.go:46","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T21:03:14.747-0300","caller":"go_backend/server.go:113","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T21:04:19.399-0300","caller":"go_backend/server.go:30","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T21:04:19.401-0300","caller":"go_backend/server.go:46","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T21:04:19.401-0300","caller":"go_backend/server.go:113","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T21:04:36.716-0300","caller":"go_backend/server.go:30","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T21:04:36.717-0300","caller":"go_backend/server.go:46","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T21:04:36.717-0300","caller":"go_backend/server.go:110","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T21:04:38.151-0300","caller":"go_backend/server.go:105","msg":"Accessed login route ","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiIiwidGltZXN0YW1wIjoxNzMwNzY1MDc4fQ._eBZBZr15C0ykLM_kghP6_o7mCE5Zq_27GwWtbSG5sM"}
+{"level":"info","timestamp":"2024-11-04T21:04:44.826-0300","caller":"go_backend/server.go:30","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T21:04:44.826-0300","caller":"go_backend/server.go:46","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T21:04:44.827-0300","caller":"go_backend/server.go:110","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-04T21:04:49.136-0300","caller":"go_backend/server.go:105","msg":"Accessed login route ","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiIiwidGltZXN0YW1wIjoxNzMwNzY1MDg5fQ.2QGozdvb-NJsfBMiV459m2kzOz_p6qgkIIWMyqdqD9Y"}
+{"level":"info","timestamp":"2024-11-04T21:06:14.616-0300","caller":"go_backend/server.go:105","msg":"Accessed login route ","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiIiwidGltZXN0YW1wIjoxNzMwNzY1MTc0fQ.fGEZVmK1mSfNIEJqrkZLhUNVkx9eYW8Lpn0sYtSIJ9Q"}
+{"level":"info","timestamp":"2024-11-04T21:06:18.648-0300","caller":"go_backend/server.go:105","msg":"Accessed login route ","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiIiwidGltZXN0YW1wIjoxNzMwNzY1MTc4fQ.LAI4Iidcwzpr_KySS2wnrNx0myu0rWs0LplTNt7YB4Y"}

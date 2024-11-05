@@ -11,12 +11,18 @@ def get_user_data():
     # req.post("http://localhost:5000/users", json=user_ob)
     return user_ob
 
+def get_token():
+    res = req.post("http://localhost:5000/login", json={"name": "asdasd"})
+    print(res.json())
+    return res.json()
+
+
 
 def query_user_api():
     user = get_user_data()
     # print("User: ")
     # print(user)
-    res = req.post("http://localhost:5000/users", json=user)
+    res = req.post("http://localhost:5000/users", json=user, headers={"Authorization": "Bearer " + get_token()['token']}) 
     print(res.json())
     return user
 
@@ -33,5 +39,6 @@ def query_posts_api(user):
     print(res.json())
 
 
+get_token()
 user = query_user_api()
 query_posts_api(user)

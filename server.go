@@ -2,13 +2,17 @@ package main
 
 import (
 	"fmt"
+	"net/http"
+	"time"
 
 	"github.com/enzoenrico/go_backend/app"
 	"github.com/enzoenrico/go_backend/app/handlers"
 	"github.com/enzoenrico/go_backend/app/logger"
+	"github.com/enzoenrico/go_backend/app/users"
+	"github.com/golang-jwt/jwt"
 	"github.com/labstack/echo/v4"
 
-	// "github.com/labstack/echo/v4/middleware"
+	"github.com/labstack/echo/v4/middleware"
 	"go.uber.org/zap"
 )
 
@@ -65,13 +69,10 @@ func main() {
 	})
 
 	// JWT-protected route
-	// e.GET("/users", handlers.GetAllUsers, middleware.JWTWithConfig(middleware.JWTConfig{
-	// 	SigningKey: []byte(config.JwtSecret),
-	// }))
 
-	userGroup := e.Group("/users", func(next echo.HandlerFunc) echo.HandlerFunc {
-		return next
-	})
+	userGroup := e.Group("/users", middleware.JWTWithConfig(middleware.JWTConfig{
+		SigningKey: []byte(config.JwtSecret),
+	}))
 
 	// Root route
 	e.GET("/", func(c echo.Context) error {
@@ -88,6 +89,22 @@ func main() {
 	e.GET("/posts", handlers.GetAllPosts)
 	e.GET("/posts/:id", handlers.GetPostByID)
 	e.POST("/posts", handlers.NewPost)
+
+	e.POST("/login", func(c echo.Context) error {
+		var Iuser users.User
+		c.Bind(Iuser)
+
+		token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+			"name":      Iuser.Name,
+			"timestamp": time.Now().Unix(),
+		})
+		tokenString, err := token.SignedString([]byte(config.JwtSecret))
+		if err != nil {
+			return c.JSON(http.StatusInternalServerError, map[string]string{})
+		}
+		logger.Logger.Info("Accessed login route ", zap.String("token", tokenString))
+		return c.JSON(http.StatusOK, map[string]string{"token": tokenString})
+	})
 
 	// Start server on port 5000
 	logger.Logger.Info("Listening on port 5000")
