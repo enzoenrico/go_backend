@@ -1,38 +1,67 @@
 # go_backend
 
-this project is being developed for the backend course @pucpr
+A REST API backend developed for the backend course @pucpr using Go and Echo framework
+Made with blood, sweat & tears by [Enzo Enrico](https://github.com/enzoenrico) & [Theo Ravgalia](https://github.com/TheoRavaglia)
 
-## project structure
+## Project Structure
+
+>server.go - Main entry point and server configuration
 >
-> ```server.go``` - the main entry point
-> > ```app/handlers``` - directory with route handlers
->
+> app/
+> ├── config.go - Application configuration
+> ├── config.json       - Config file for JWT and roles
+> ├── database/        - Database operations
+> ├── handlers/        - HTTP route handlers
+> ├── logger/          - Logging configuration
+> ├── permissions/     - Role-based permissions
+> ├── posts/           - Post model
+> └── users/           - User model and authentication
 
-## stack used
+## Stack Used
 
-in this project, we're aiming to get the best possible performance, not giving up on DX
-> echo - our back-end framework, based on the net/http standard lib
->
-> air - hot reload for our application
+- Echo - High performance web framework
+- Air - Hot reload for development
+- Zap - Structured logging
+- JWT - Authentication
+- SQLite3 - Database (pending)
 
-## requirements for the api
+## Features
 
-- [ ] SQLite integration
-- [ ] Swagger
-- [+ -] Testing (kinda....)
-- [ ] Logging
-- [ ] Authentication / middleware
-  - [ ] JWT
-  - [ ] Roles
-    > Middleware already kinda implemented, check the ```server.go``` file for the implementations
-- [x] Routing
+### Implemented ✅
 
-## todo / next steps
+- [x] REST API Routing
+  - User routes (GET/POST)
+  - Post routes (GET/POST)
+- [x] JWT Authentication
+- [x] Role-based Authorization
+- [x] Structured Logging with Zap
+- [x] Configuration Management
+- [x] In-memory Data Storage
 
-- [x] add propper logging (zap!) (nice, implementation looks great -e)
-- [x] add middleware for auth
-- [ ] Add the ```sqlite3``` support (i.e. fix the gcc error)
-- [+ -] add user role changing by file (.config) (??)
+## API Endpoints
 
-- [x] make ```database.go``` acc file with dbs
-- [x] create post handlers and operations
+### Users
+
+- `GET /users` - Get all users (requires JWT)
+- `GET /users/:id` - Get user by ID (requires JWT)
+- `POST /users` - Create new user (requires JWT)
+
+### Posts
+
+- `GET /posts` - Get all posts
+- `GET /posts/:id` - Get post by ID
+- `POST /posts` - Create new post
+
+### Authentication
+
+- `POST /login` - Get JWT token
+
+## Development
+
+Run the server with hot reload:
+
+```sh
+    air -c ./air.toml
+```
+
+The API will be available at `http://localhost:5000`
