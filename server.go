@@ -25,6 +25,7 @@ func main() {
 		fmt.Println("Erro ao inicializar o logger:", err)
 		return
 	}
+
 	defer logger.Logger.Sync()
 
 	logger.Logger.Info("Server is starting...")

@@ -3,6 +3,8 @@
 A REST API backend developed for the backend course @pucpr using Go and Echo framework
 Made with blood, sweat & tears by [Enzo Enrico](https://github.com/enzoenrico) & [Theo Ravgalia](https://github.com/TheoRavaglia)
 
+[Youtube video about the project](https://youtu.be/xOGrUIhQ9iw)
+
 ## Project Structure
 
 >server.go - Main entry point and server configuration
