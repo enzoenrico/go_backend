@@ -92,3 +92,10 @@
 {"level":"info","timestamp":"2024-11-04T21:04:49.136-0300","caller":"go_backend/server.go:105","msg":"Accessed login route ","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiIiwidGltZXN0YW1wIjoxNzMwNzY1MDg5fQ.2QGozdvb-NJsfBMiV459m2kzOz_p6qgkIIWMyqdqD9Y"}
 {"level":"info","timestamp":"2024-11-04T21:06:14.616-0300","caller":"go_backend/server.go:105","msg":"Accessed login route ","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiIiwidGltZXN0YW1wIjoxNzMwNzY1MTc0fQ.fGEZVmK1mSfNIEJqrkZLhUNVkx9eYW8Lpn0sYtSIJ9Q"}
 {"level":"info","timestamp":"2024-11-04T21:06:18.648-0300","caller":"go_backend/server.go:105","msg":"Accessed login route ","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiIiwidGltZXN0YW1wIjoxNzMwNzY1MTc4fQ.LAI4Iidcwzpr_KySS2wnrNx0myu0rWs0LplTNt7YB4Y"}
+{"level":"info","timestamp":"2024-11-04T21:13:01.853-0300","caller":"go_backend/server.go:30","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-04T21:13:01.863-0300","caller":"go_backend/server.go:46","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-04T21:13:01.863-0300","caller":"go_backend/server.go:110","msg":"Listening on port 5000"}
+{"level":"info","timestamp":"2024-11-05T08:00:09.410-0300","caller":"go_backend/server.go:79","msg":"Root endpoint accessed"}
+{"level":"info","timestamp":"2024-11-05T10:19:22.196-0300","caller":"go_backend/server.go:30","msg":"Server is starting..."}
+{"level":"info","timestamp":"2024-11-05T10:19:22.209-0300","caller":"go_backend/server.go:46","msg":"Config loaded successfully","JWT Secret":"s3cret_secur3_passw0rd"}
+{"level":"info","timestamp":"2024-11-05T10:19:22.210-0300","caller":"go_backend/server.go:110","msg":"Listening on port 5000"}

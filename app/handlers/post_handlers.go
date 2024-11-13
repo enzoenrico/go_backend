@@ -32,7 +32,7 @@ func NewPost(c echo.Context) error {
 		Timestamp: body_content.Timestamp,
 	}
 	database.PostsDB[strconv.Itoa(new_post.ID)] = new_post
-	return c.JSON(http.StatusCreated, body_content)
+	return c.JSON(http.StatusCreated, new_post)
 }
 
 func extract_post_from_request(c echo.Context) posts.Post {
